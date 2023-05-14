@@ -65,7 +65,22 @@
               prose-img:rounded-md
               sm:text-left md:text-justify
               ">
+
+    {% if article.translations %}
+    {% for art in article.translations %}
+        <p class="hover:underline decoration-4 decoration-solid"><a href="{{ art.url }}">
+        {% if art.lang == 'en' %} 
+            Читать на Английском 🇬🇧
+        {% elif art.lang == 'ru' %}
+            Read in Russian 🇷🇺
+        {% endif %} 
+        </a></p>
+    {% endfor %}
+    <hr>
+    {% endif %}
+
     {{ article.content }}
+    
     <!-- <div class="aspect-w-16 aspect-h-9 mx-auto"></div> CSS placeholder -->
   </div>
   <footer class="flex flex-col mt-10 ">
